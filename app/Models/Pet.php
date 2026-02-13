@@ -18,6 +18,10 @@ class Pet extends Model
     // Define the relationship with owner
     public function owner()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(Owner::class, 'propietari_id');
+    }
+
+    public function history() {
+        return $this->hasMany(History::class);
     }
 }

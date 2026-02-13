@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OwnerSeeder::class,
             PetSeeder::class,
+            HistorySeeder::class,
         ]);
     }
 }
