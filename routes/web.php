@@ -12,7 +12,10 @@ Route::get('/', function () {
 Route::name('owner.')->prefix('owners')->group(function () {
     Route::get('/list', [OwnerController::class, 'index'])->name('list');
     Route::get('/search', [OwnerController::class, 'showSearchForm'])->name('search');
+    Route::post('/search', [OwnerController::class, 'searchPets'])->name('searchPets');
     Route::get('/modify', [OwnerController::class, 'showModifyForm'])->name('modify');
+    Route::post('/modify/search', [OwnerController::class, 'searchForModify'])->name('searchModify');
+    Route::post('/modify/update', [OwnerController::class, 'update'])->name('update');
 });
 
 // Pet routes

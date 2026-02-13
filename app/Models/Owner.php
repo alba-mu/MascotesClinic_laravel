@@ -17,8 +17,8 @@ class Owner extends Model
         'movil'
     ];
 
-    // Define the relationship with products
+    // Define the relationship with pets
     public function pets() {
-        return $this->hasMany(Pet::class);
+        return $this->hasMany(Pet::class, 'propietari_id');
     }
 }

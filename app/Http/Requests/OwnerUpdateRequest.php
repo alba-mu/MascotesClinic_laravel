@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class OwnerUpdateRequest extends FormRequest
 {
@@ -41,5 +43,18 @@ class OwnerUpdateRequest extends FormRequest
             'movil.required' => 'El mòbil és obligatori',
             'movil.regex' => 'El mòbil ha de ser un valor vàlid (9 dígits)',
         ];
+    }
+
+    /**
+     * Handle a failed validation attempt.
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        // Keep owner_id in session when validation fails
+        if ($this->has('id')) {
+            session()->flash('owner_id', $this->input('id'));
+        }
+
+        parent::failedValidation($validator);
     }
 }
