@@ -2,63 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all owners.
      */
     public function index()
     {
-        //
+        $owners = Owner::all();
+        return view('owners.list', compact('owners'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for searching pets by owner.
      */
-    public function create()
+    public function showSearchForm()
     {
-        //
+        return view('owners.search');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for modifying owner information.
      */
-    public function store(Request $request)
+    public function showModifyForm()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('owners.modify');
     }
 }

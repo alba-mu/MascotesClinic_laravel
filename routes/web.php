@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnerController;
 
 // Home route
 Route::get('/', function () {
@@ -9,17 +10,9 @@ Route::get('/', function () {
 
 // Owner routes
 Route::name('owner.')->prefix('owners')->group(function () {
-    Route::get('/list', function () {
-        return view('owners.list');
-    })->name('list');
-    
-    Route::get('/search', function () {
-        return view('owners.search');
-    })->name('search');
-    
-    Route::get('/modify', function () {
-        return view('owners.modify');
-    })->name('modify');
+    Route::get('/list', [OwnerController::class, 'index'])->name('list');
+    Route::get('/search', [OwnerController::class, 'showSearchForm'])->name('search');
+    Route::get('/modify', [OwnerController::class, 'showModifyForm'])->name('modify');
 });
 
 // Pet routes
