@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\PetController;
 
 // Home route
 Route::get('/', function () {
@@ -20,15 +21,13 @@ Route::name('owner.')->prefix('owners')->group(function () {
 
 // Pet routes
 Route::name('pet.')->prefix('pets')->group(function () {
-    Route::get('/list', function () {
-        return view('pets.list');
-    })->name('list');
+    Route::get('/list', [PetController::class, 'index'])->name('list');
+    Route::get('/list/{id}/edit', [PetController::class, 'edit'])->name('edit');
+    Route::post('/list/update', [PetController::class, 'updateFromList'])->name('updateFromList');
     
-    Route::get('/search', function () {
-        return view('pets.search');
-    })->name('search');
+    Route::get('/search', [PetController::class, 'showSearchForm'])->name('search');
+    Route::post('/search', [PetController::class, 'searchDetail'])->name('searchDetail');
     
-    Route::get('/history', function () {
-        return view('pets.history');
-    })->name('history');
+    Route::get('/history', [PetController::class, 'showAddHistoryForm'])->name('history');
+    Route::post('/history', [PetController::class, 'storeHistory'])->name('storeHistory');
 });
