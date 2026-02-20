@@ -3,8 +3,6 @@
 @section('title', 'Afegir Historial - Mascotes Clinic')
 
 @section('content')
-    @include('partials.messages')
-
     <div id="content" class="container-fluid mt-4">
         <div class="container mb-4">
             <form method="post" action="{{ route('pet.storeHistory') }}">
@@ -28,6 +26,9 @@
                                 value="{{ old('mascota_id') }}"
                                 required
                             />
+                            @error('mascota_id')
+                                <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="data" class="form-label fw-semibold label-primary">
@@ -41,6 +42,9 @@
                                 value="{{ old('data') }}"
                                 required
                             />
+                            @error('data')
+                                <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -58,6 +62,9 @@
                                 value="{{ old('motiu_visita') }}"
                                 required
                             />
+                            @error('motiu_visita')
+                                <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -73,6 +80,9 @@
                                 placeholder="Introduïu una descripció detallada de la visita, diagnòstic, tractament aplicat, etc."
                                 rows="5"
                             >{{ old('descripcio') }}</textarea>
+                            @error('descripcio')
+                                <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                            @enderror
                             <small class="text-muted d-block mt-2">
                                 <i class="bi bi-info-circle me-1"></i>Podeu afegir detalls addicionals sobre la visita
                             </small>

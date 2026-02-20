@@ -194,6 +194,16 @@ body.clinic-body {
     color: #469387;
 }
 
+/* Input validation errors */
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.form-control.is-invalid:focus {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
 /* ===== BUTTONS ===== */
 .btn-clinic-search {
     background-color: #efc65d;

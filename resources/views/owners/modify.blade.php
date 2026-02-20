@@ -3,8 +3,6 @@
 @section('title', 'Modificar Propietari - Mascotes Clinic')
 
 @section('content')
-    @include('partials.messages')
-
     <div id="content" class="container-fluid mt-4">
         <div class="container">
             <div class="row g-4">
@@ -29,6 +27,9 @@
                                     name="search_id"
                                     value="{{ old('search_id', isset($owner) ? $owner->id : '') }}"
                                 />
+                                @error('search_id')
+                                    <div class="invalid-feedback d-block text-white mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-clinic-search btn-lg w-100 shadow fw-semibold">
@@ -98,6 +99,9 @@
                                             value="{{ old('email', isset($owner) ? $owner->email : '') }}"
                                             {{ !isset($owner) ? 'disabled' : '' }}
                                         />
+                                        @error('email')
+                                            <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -115,6 +119,9 @@
                                             value="{{ old('movil', isset($owner) ? $owner->movil : '') }}"
                                             {{ !isset($owner) ? 'disabled' : '' }}
                                         />
+                                        @error('movil')
+                                            <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

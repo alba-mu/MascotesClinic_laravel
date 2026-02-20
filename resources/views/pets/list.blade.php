@@ -3,8 +3,6 @@
 @section('title', 'Llistat de Mascotes - Mascotes Clinic')
 
 @section('content')
-    @include('partials.messages')
-
     <div id="content" class="container-fluid mt-4">
         <div class="container">
             <div class="row g-4">
@@ -86,6 +84,9 @@
                                     value="{{ old('nom', isset($petToEdit) ? $petToEdit->nom : '') }}"
                                     {{ !isset($petToEdit) ? 'disabled' : '' }}
                                 />
+                                @error('nom')
+                                    <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-4">
@@ -101,6 +102,9 @@
                                     value="{{ old('propietari_id', isset($petToEdit) ? $petToEdit->propietari_id : '') }}"
                                     {{ !isset($petToEdit) ? 'disabled' : '' }}
                                 />
+                                @error('propietari_id')
+                                    <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <p class="text-danger fst-italic small mb-3"><i class="bi bi-info-circle me-1"></i>* Camps obligatoris</p>

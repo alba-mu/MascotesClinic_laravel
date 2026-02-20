@@ -3,8 +3,6 @@
 @section('title', 'Llistat de Propietaris - Mascotes Clinic')
 
 @section('content')
-    @include('partials.messages')
-
     <div id="content" class="container-fluid mt-4">
         <div class="container">
             <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-primary">

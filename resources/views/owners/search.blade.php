@@ -3,8 +3,6 @@
 @section('title', 'Buscar Mascotes - Mascotes Clinic')
 
 @section('content')
-    @include('partials.messages')
-
     <div id="content" class="container-fluid mt-4">
         <div class="container">
             <form method="post" action="{{ route('owner.searchPets') }}">
@@ -28,6 +26,9 @@
                                     name="id"
                                     value="{{ old('id', isset($owner) ? $owner->id : '') }}"
                                 />
+                                @error('id')
+                                    <div class="invalid-feedback d-block text-white mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-clinic-search btn-lg w-100 shadow fw-semibold">
