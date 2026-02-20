@@ -50,8 +50,13 @@
         <div class="container">
             <div class="row mb-4 justify-content-center">
                 <div class="col-md-4 col-lg-3">
-                    <a href="{{ route('login') }}" class="btn btn-clinic-primary w-100 py-2 fw-semibold">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sessió
+                    <a href="{{ route('login') }}" class="btn btn-clinic-primary w-100 py-2 fw-semibold text-white">
+                         <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sessió
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <a href="{{ route('register') }}" class="btn btn-clinic-secondary w-100 py-2 fw-semibold text-white">
+                         <i class="bi bi-person-plus me-2"></i>Registra't
                     </a>
                 </div>
             </div>

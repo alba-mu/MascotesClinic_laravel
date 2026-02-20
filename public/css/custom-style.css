@@ -12,7 +12,7 @@
 
 /* ===== BACKGROUND & BODY ===== */
 body.clinic-body {
-    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    background: linear-gradient(to bottom, #e6eaee 50%, #ffffff 100%);
     min-height: 100vh;
 }
 
@@ -33,20 +33,44 @@ body.clinic-body {
 
 /* ===== NAVBAR ===== */
 .clinic-navbar {
-    background: linear-gradient(135deg, #469387 0%, #469387 100%);
+    background-color: #469387 !important; /* Color primario sólido */
     border-bottom: 3px solid #e69739;
+    padding: 0.7rem 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Marca y Texto */
+.brand-text {
+    letter-spacing: 0.5px;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+/* Enlaces de navegación */
+.clinic-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 .clinic-navbar .nav-link:hover {
-    color: #efc65d !important;
+    color: #efc65d !important; /* Amarillo acento al pasar el mouse */
+    transform: translateY(-1px);
 }
 
+/* Dropdowns (Menú desplegable) */
 .clinic-dropdown {
     background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem;
+    margin-top: 8px !important;
 }
 
 .clinic-dropdown .dropdown-item {
     color: #469387;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
     font-weight: 500;
 }
 
@@ -55,8 +79,51 @@ body.clinic-body {
     color: #469387 !important;
 }
 
-.clinic-dropdown .dropdown-divider {
-    border-color: #aad3dc;
+/* Botones de Acción */
+.btn-logout {
+    background-color: #e69739; /* Naranja secundario para que destaque */
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #d9892f;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-login-outline {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-login-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #efc65d;
+    border-color: #efc65d;
+}
+
+/* Animación y Responsive */
+@media (min-width: 992px) {
+    .animate { animation-duration: 0.25s; animation-fill-mode: both; }
+    @keyframes slideIn {
+        0% { transform: translateY(10px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    .slideIn { animation-name: slideIn; }
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #3a7d72; /* Un tono un poco más oscuro para el móvil */
+        margin: 10px -1rem -0.7rem -1rem;
+        padding: 1.5rem;
+    }
 }
 
 /* ===== PANELS & FIELDSETS ===== */
