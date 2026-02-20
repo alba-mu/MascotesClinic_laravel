@@ -15,6 +15,38 @@
             </div>
         </div>
 
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-border-primary">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-people-fill card-icon icon-primary"></i>
+                        <h5 class="card-title mt-3 mb-3 fw-bold title-primary">Gestió de Propietaris i Mascotes</h5>
+                        <p class="card-text text-muted">Consulta, modifica i gestiona la informació dels propietaris i de les seves mascotes registrats al sistema.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-border-orange">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-search card-icon icon-orange"></i>
+                        <h5 class="card-title mt-3 mb-3 fw-bold title-orange">Cerca de Mascotes</h5>
+                        <p class="card-text text-muted">Troba totes les mascotes associades a un propietari específic de manera ràpida i eficient.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-border-light">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-pencil-square card-icon icon-light"></i>
+                        <h5 class="card-title mt-3 mb-3 fw-bold title-light">Actualització de l'Historial</h5>
+                        <p class="card-text text-muted">Modifica les dades de l'historial de les mascotes mantenint la informació sempre actualitzada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="row mb-4 justify-content-center">
                 <div class="col-md-4 col-lg-3">

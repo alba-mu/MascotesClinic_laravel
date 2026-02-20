@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // Redirigeix al home
+            return redirect()->intended('/home'); // Redirigeix al home
         }
 
         return back()->withErrors([
@@ -69,6 +69,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/logout');
+        return view('auth.logout');
     }
 }

@@ -75,6 +75,11 @@ body.clinic-body {
     border-top: 4px solid #aad3dc !important;
 }
 
+.panel-secondary {
+    background-color: #ffffff;
+    border-top: 4px solid #e69739 !important;
+}
+
 /* ===== LEGENDS ===== */
 .legend-orange {
     background-color: #e69739;
@@ -125,24 +130,26 @@ body.clinic-body {
 /* ===== BUTTONS ===== */
 .btn-clinic-search {
     background-color: #efc65d;
-    border: none;
-    color: white;
 }
 
 .btn-clinic-search:hover {
     background-color: #e6b84d;
-    color: white;
 }
 
 .btn-clinic-primary {
     background-color: #469387;
-    border: none;
-    color: white;
 }
 
 .btn-clinic-primary:hover {
     background-color: #3a7d72;
-    color: white;
+}
+
+.btn-clinic-secondary {
+    background-color: #e69739;
+}
+
+.btn-clinic-secondary:hover {
+    background-color: #d9892f;
 }
 
 .btn-clinic-primary:disabled {

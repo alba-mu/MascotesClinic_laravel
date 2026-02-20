@@ -1,8 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm clinic-navbar">
   <div class="container-fluid">
+    @auth
     <a class="navbar-brand text-white px-3 fw-bold" href="{{ route('home') }}">
       <i class="bi bi-house-door-fill me-2"></i>Mascotes Clinic
     </a>
+    @else
+    <a class="navbar-brand text-white px-3 fw-bold" href="{{ route('welcome') }}">
+      <i class="bi bi-house-door-fill me-2"></i>Mascotes Clinic
+    </a>
+    @endauth
 
     <button class="navbar-toggler border border-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
       aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,8 +17,8 @@
 
     <div class="collapse navbar-collapse" id="mainNavbar">
 
+      @auth
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
         <li class="nav-item dropdown px-3">
           <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
             <i class="bi bi-people-fill me-1"></i>Propietaris
@@ -62,7 +68,37 @@
             </li>
           </ul>
         </li>
+
+
+
       </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-clinic-secondary fw-semibold text-white">
+              <i class="bi bi-box-arrow-right me-2"></i>Logout
+            </button>
+          </form>
+        </li>
+      </ul>
+
+      @else
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+          <a href="{{ route('login') }}" class="btn btn-clinic-secondary fw-semibold text-white">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sessió
+          </a>
+        </li>
+        <li class="nav-item px-3">
+          <a href="{{ route('register') }}" class="btn btn-clinic-search fw-semibold text-white">
+            <i class="bi bi-person-plus me-2"></i>Registrar-se
+          </a>
+        </li>
+      </ul>
+
+      @endauth
 
     </div>
   </div>
