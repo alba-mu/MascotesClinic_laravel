@@ -8,7 +8,7 @@ Mascotes Clinic és un sistema de gestió integral per a clíniques veterinàrie
 
 ## 🎯 Funcionalitats Principals
 
-### Autenticació
+### 🔒 Autenticació
 Aquesta aplicació permet als usuaris registrar-se, iniciar sessió i tancar sessió de manera eficient utilitzant les funcionalitats d'autenticació de Laravel.
 
 #### Rutes Típiques de Laravel
