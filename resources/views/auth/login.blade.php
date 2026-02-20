@@ -12,12 +12,12 @@
                         <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sessió
                     </legend>
 
-                    <form method="POST" action="{{ route('login') }}" novalidate>
+                    <form method="POST" action="{{ route('login') }}" novalidate id="loginForm">
                         @csrf
 
                         <div class="mb-3">
                             <label for="email" class="form-label"><i class="bi bi-envelope me-2"></i>Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autofocus>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $rememberedEmail ?? '') }}" required autofocus>
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="form-check small">
-                            <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember', $rememberedRemember ?? false) ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">Recorda'm</label>
                         </div>
 
@@ -48,4 +48,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById('email');
+            const rememberCheckbox = document.getElementById('remember');
+            const loginForm = document.getElementById('loginForm');
+
+            const storedEmail = localStorage.getItem('remembered_email');
+            const storedRemember = localStorage.getItem('remembered_remember');
+
+            if (storedEmail) {
+                emailInput.value = storedEmail;
+            }
+            if (storedRemember === 'true') {
+                rememberCheckbox.checked = true;
+            }
+
+            rememberCheckbox.addEventListener('change', () => {
+                if (!rememberCheckbox.checked) {
+                    localStorage.removeItem('remembered_email');
+                    localStorage.removeItem('remembered_remember');
+                }
+            });
+
+            loginForm.addEventListener('submit', () => {
+                if (rememberCheckbox.checked) {
+                    localStorage.setItem('remembered_email', emailInput.value.trim());
+                    localStorage.setItem('remembered_remember', 'true');
+                } else {
+                    localStorage.removeItem('remembered_email');
+                    localStorage.removeItem('remembered_remember');
+                }
+            });
+        });
+    </script>
 @endsection

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -12,19 +15,29 @@ class AuthController extends Controller
     // Mostrar formulari de login
     public function showLogin()
     {
-        return view('auth.login');
+        $rememberedEmail = Cookie::get('remembered_email');
+        $rememberedRemember = !empty($rememberedEmail);
+
+        return view('auth.login', [
+            'rememberedEmail' => $rememberedEmail,
+            'rememberedRemember' => $rememberedRemember,
+        ]);
     }
 
     // Processar login
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $credentials = $request->validated();
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+
+            if ($request->boolean('remember')) {
+                Cookie::queue('remembered_email', $credentials['email'], 60 * 24 * 30);
+            } else {
+                Cookie::queue(Cookie::forget('remembered_email'));
+            }
+
             return redirect()->intended('/home'); // Redirigeix al home
         }
 
@@ -40,13 +53,9 @@ class AuthController extends Controller
     }
 
     // Processar registre
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:8'],
-        ]);
+        $validated = $request->validated();
 
         // Crear usuari
         $user = User::create([
@@ -54,9 +63,6 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
-
-        // Loguejar automàticament després de registrar-se
-        //Auth::login($user);
 
         // Redirigir a la pàgina de login després de registrar-se
         return redirect('/login')->with('success', 'Registre completat. Ara pots iniciar sessió.');
